@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Tools",
+  "version": "1.0.0",
+  "description": "在 GitHub 仓库页面显示相关第三方工具链接",
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*/*"],
+      "js": ["config.js", "content.js"],
+      "css": ["style.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GitHub Tools Settings"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

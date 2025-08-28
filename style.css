@@ -1,0 +1,319 @@
+/* GitHub Tools Extension Styles - Watch Button Style */
+
+.github-tools-container {
+  margin: 0;
+  margin-right: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  position: relative;
+  z-index: 1000;
+  display: inline-block;
+}
+
+.github-tools-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* 模仿GitHub Watch按钮的样式 */
+.github-tools-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f6f8fa;
+  border: 1px solid rgba(31, 35, 40, 0.15);
+  border-radius: 6px;
+  color: #24292f;
+  box-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+  transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  transition-property: color, background-color, border-color;
+}
+
+.github-tools-button.selected {
+  background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
+  border-color: var(--button-default-borderColor-active, var(--color-btn-active-border));
+  transition-duration: 0.1s;
+}
+
+.github-tools-button:hover,
+.github-tools-button.selected:hover {
+  background-color: var(--button-default-bgColor-hover, var(--color-btn-hover-bg));
+  border-color: var(--button-default-borderColor-hover, var(--color-btn-hover-border));
+  transition-duration: 0.1s;
+}
+
+.github-tools-button .octicon {
+  margin-right: 4px;
+  fill: currentColor;
+}
+
+.github-tools-text {
+  margin-right: 4px;
+}
+
+.dropdown-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: "";
+  border-top-style: solid;
+  border-top-width: 4px;
+  border-right: 4px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 4px solid transparent;
+  opacity: 0.8;
+}
+
+.github-tools-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 300px;
+  max-width: 400px;
+  /* border: 1px solid #d1d9e0; */
+  border-color: var(--borderColor-default, var(--color-border-default));
+  z-index: 1001;
+  overflow: hidden;
+  animation: dropdown-appear 0.12s cubic-bezier(0, 0, 0.2, 1) backwards;
+  display: none;
+
+  background-color: var(--overlay-bgColor, var(--color-canvas-overlay));
+  border-radius: var(--borderRadius-large, .75rem);
+  box-shadow: var(--shadow-floating-small, var(--color-overlay-shadow));
+}
+
+.github-tools-dropdown[style*="block"] {
+  display: block !important;
+}
+
+/* 确保在按钮组中的正确对齐 */
+[data-testid="repository-actions-container"] .github-tools-container,
+.pagehead-actions .github-tools-container {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+/* 在按钮组中时的下拉菜单定位调整 */
+[data-testid="repository-actions-container"] .github-tools-dropdown,
+.pagehead-actions .github-tools-dropdown {
+  right: 0;
+  left: auto;
+}
+
+@keyframes dropdown-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.github-tools-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid var(--button-default-borderColor-active, var(--color-btn-active-border));
+}
+
+.github-tools-item:last-child {
+  border-bottom: none;
+}
+
+.github-tools-item:hover {
+  background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
+}
+
+.github-tools-item.settings {
+  border-top: 1px solid var(--button-default-borderColor-active, var(--color-btn-active-border));
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  font-size: 13px;
+}
+
+.github-tools-item.settings:hover {
+  background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
+  color: var(--fgColor-muted, var(--color-fg-muted));
+}
+
+.tool-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-name {
+  font-weight: var(--base-text-weight-semibold, 600);
+  word-break: break-word;
+  margin-bottom: 4px;
+  color: var(--fgColor-default, var(--color-fg-default));
+  font-size: var(--text-body-size-medium, .875rem);
+  line-height: 20px;
+  position: relative;
+}
+
+.tool-description {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  font-size: var(--text-body-size-small, .75rem);
+  font-weight: var(--base-text-weight-normal, 400);
+  line-height: 16px;
+}
+.tool-url {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  font-size: var(--text-body-size-small, .75rem);
+  font-weight: var(--base-text-weight-normal, 400);
+  line-height: 16px;
+}
+
+.external-link {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.github-tools-item:hover .external-link {
+  opacity: 0.8;
+}
+
+/* 深色模式适配 - 模仿GitHub深色主题 */
+@media (prefers-color-scheme: dark) {
+  .github-tools-button {
+    background-color: #21262d;
+    border-color: rgba(240, 246, 252, 0.1);
+    color: #f0f6fc;
+    box-shadow: 0 0 transparent;
+  }
+  
+  .github-tools-button:hover {
+    background-color: #30363d;
+    border-color: #8b949e;
+    transition-duration: 0.1s;
+  }
+  
+  .github-tools-button.selected {
+    background-color: #1f6feb;
+    border-color: rgba(240, 246, 252, 0.1);
+    color: #ffffff;
+    box-shadow: 0 0 transparent;
+  }
+  
+  .github-tools-button.selected:hover {
+    background-color: #1f6feb;
+  }
+  
+  .github-tools-dropdown {
+    background: #161b22;
+    border-color: #30363d;
+    box-shadow: 0 16px 32px rgba(1, 4, 9, 0.85);
+  }
+  
+  .github-tools-item {
+    border-bottom-color: #21262d;
+  }
+  
+  .github-tools-item:hover {
+    background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
+  }
+  
+  .github-tools-item.settings {
+    border-top-color: #30363d;
+    color: #7d8590;
+  }
+  
+  .github-tools-item.settings:hover {
+    background: #21262d;
+    color: #f0f6fc;
+  }
+  
+  .tool-name {
+    color: #f0f6fc;
+  }
+  
+  .tool-description {
+    color: #8b949e;
+  }
+}
+
+/* GitHub页面特定样式调整 */
+.Layout-sidebar .github-tools-container {
+  margin: 0 0 16px 0;
+  padding: 16px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .Layout-sidebar .github-tools-container {
+    background: #161b22;
+    border-color: #30363d;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .github-tools-dropdown {
+    min-width: 280px;
+    max-width: 90vw;
+  }
+  
+  .github-tools-item {
+    padding: 10px 12px;
+  }
+  
+  .tool-name {
+    font-size: 13px;
+  }
+  
+  .tool-description {
+    font-size: 11px;
+  }
+}
+
+/* 动画效果 */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.github-tools-dropdown[style*="block"] {
+  animation: slideDown 0.2s ease;
+}
+
+/* 工具项图标样式 */
+.github-tools-item svg {
+  flex-shrink: 0;
+}
+
+.github-tools-item.settings svg {
+  margin-right: 8px;
+}
+
+/* 确保在GitHub页面中的正确定位 */
+.repository-content .github-tools-container {
+  margin-bottom: 24px;
+}
+
+.Layout-main .github-tools-container {
+  margin-bottom: 16px;
+}
