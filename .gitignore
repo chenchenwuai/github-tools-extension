@@ -51,7 +51,6 @@ temp/
 # Chrome extension development
 *.crx
 *.pem
-key.pem
 
 # Firefox extension development
 web-ext-artifacts/

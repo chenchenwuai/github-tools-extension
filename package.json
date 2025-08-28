@@ -1,0 +1,34 @@
+{
+  "name": "github-tools-extension",
+  "version": "1.0.0",
+  "description": "在 GitHub 仓库页面显示相关第三方工具链接",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "build:chrome": "node -e \"require('./build.js').buildPlatform('chrome')\"",
+    "build:firefox": "node -e \"require('./build.js').buildPlatform('firefox')\"",
+    "build:edge": "node -e \"require('./build.js').buildPlatform('edge')\"",
+    "clean": "rm -rf dist/ dev-build/",
+    "dev": "node scripts/dev-server.js",
+    "icons": "node scripts/generate-icons.js",
+    "zip": "npm run build && echo 'Extension packages created in dist/ folder'",
+    "test": "echo 'Load extension in chrome://extensions/ for testing'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "firefox-addon",
+    "github",
+    "developer-tools",
+    "productivity"
+  ],
+  "author": "chenchenwuai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenchenwuai/github-tools-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenchenwuai/github-tools-extension/issues"
+  },
+  "homepage": "https://github.com/chenchenwuai/github-tools-extension#readme"
+}
